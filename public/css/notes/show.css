@@ -1,0 +1,115 @@
+.note-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: 'poppins' sans-serif;
+}
+
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.back-button {
+    color: #666;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.back-button:hover {
+    color: #000;
+}
+
+.note-view {
+    margin-bottom: 40px;
+}
+
+.note-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.note-metadata {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.note-content {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.note-actions {
+    display: flex;
+    gap: 10px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+}
+
+.edit-button, .delete-button button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.edit-button {
+    background-color: #61c0bf;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #4da7a6;
+}
+
+.delete-button button {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.delete-button button:hover {
+    background-color: #e1e1e1;
+}
+
+.note-card-action {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.delete-btn {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.delete-btn:hover {
+    background-color: #e1e1e1;
+}
+
+.note-title:focus, .note-content:focus {
+    background-color: #fafafa;
+}
+
+* {
+    transition: background-color 0.2s ease, color 0.2s ease;
+}

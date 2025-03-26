@@ -1,0 +1,140 @@
+ body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.note-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+ 
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 10px;
+}
+
+.note-card {
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.note-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.note-card-content {
+    padding: 16px;
+    flex: 1;
+}
+
+.note-card-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.note-card-text {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.note-card-footer {
+    background-color: #f9f9f9;
+    padding: 12px 16px;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #999;
+}
+
+.note-card-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.note-card-action {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #666;
+    text-decoration: none;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+}
+
+.note-card-action:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+}
+
+.empty-state-text {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.success-message {
+    background-color: #dcfce7;
+    color: #166534;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    border: 1px solid #c8e6c9;
+}
+
+.success-message button {
+    background: none;
+    border: none;
+    color: #166534;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .note-container {
+        padding: 10px;
+    }
+
+    .notes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .create-note-btn {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+}

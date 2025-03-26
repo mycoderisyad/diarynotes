@@ -1,0 +1,177 @@
+:root {
+    --primary-color: #61c0bf;
+    --secondary-color: #7dcece;
+    --text-color: #2d3436;
+    --background-color: #ffffff;
+    --accent-color: #4da7a6;
+    --light-color: #f5fafa;
+    --danger-color: #dc3545;
+    --success-color: #28a745;
+    --box-shadow: rgba(97, 192, 191, 0.1) 0px 10px 20px, rgba(97, 192, 191, 0.05) 0px 6px 6px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 1.25rem auto;
+    padding: 1rem 2rem;
+}
+ 
+.hero-section {
+    text-align: center;
+    padding: 4rem 2rem;
+    background:var(--primary-color);
+    color: white;
+    border-radius: 30px;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.form-section {
+    background: var(--background-color);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: var(--box-shadow);
+    position: relative;
+    z-index: 1;
+}
+
+.form-section:hover {
+    box-shadow: rgba(97, 192, 191, 0.2) 0px 20px 30px;
+}
+
+.form-section h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.form-section h2::after {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.form-section:hover h2::after {
+    width: 100px;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    font-size: 1rem;
+    background-color: var(--light-color);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(97, 192, 191, 0.1);
+    outline: none;
+}
+
+.submit-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background:var(--primary-color);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-button:hover {
+    background: var(--secondary-color);
+}
+
+.error {
+    color: var(--danger-color);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 3rem 1.5rem;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section p {
+        font-size: 1rem;
+    }
+
+    .form-section {
+        padding: 2rem 1.5rem;
+    }
+
+    .form-section h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .form-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .submit-button {
+        width: 100%;
+    }
+}
