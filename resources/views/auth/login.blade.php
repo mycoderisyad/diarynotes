@@ -9,7 +9,7 @@
 @section('content')
 <form class="form" action="{{ route('login_handler') }}" method="POST">
     @csrf
-    <input type="text" id="login_id" name="login_id" placeholder="Username or Email" required />
+    <input type="text" id="login_id" name="login_id" placeholder="Username" value="{{ old('login_id') }}" required />
     @error('login_id')
         <span class="error">{{ $message }}</span>
     @enderror
@@ -32,7 +32,6 @@
 </form>
 
 <div class="footer">
-    Forgot your password? <a href="{{ route('forgot') }}">Reset Password</a>
     Don't have an account yet? <a href="{{ route('register') }}">Register</a>
 </div>
 @endsection

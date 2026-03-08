@@ -14,11 +14,6 @@
         @error('name')
             <span class="error">{{ $message }}</span>
         @enderror
-        <input type="email" id="email" name="email" placeholder="Email Address" value="{{ old('email') }}"
-            required />
-        @error('email')
-            <span class="error">{{ $message }}</span>
-        @enderror
 
         <input type="text" id="username" name="username" placeholder="Username" value="{{ old('username') }}"
             required />

@@ -18,12 +18,6 @@ Route::middleware('guest')->group(function () {
         Route::get('/login', 'loginform')->name('login');
         Route::post('/login', 'loginHandler')->name('login_handler');
 
-        // Password reset routes
-        Route::get('/forgot-password', 'forgotform')->name('forgot');
-        Route::post('/forgot-password', 'resetHandler')->name('send_reset_link');
-        Route::post('/reset-password/{token}', 'resetForm')->name('reset_password');
-        Route::get('/reset-password/{token}', 'showResetForm')->name('reset_password_form');
-
         // Register routes
         Route::get('/register', 'registerform')->name('register');
         Route::post('/register', 'registerHandler')->name('register_handler');
