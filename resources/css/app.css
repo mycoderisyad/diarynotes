@@ -125,8 +125,8 @@ body {
 .nav-icon { width: 18px; height: 18px; }
 
 @media (max-width: 600px) {
-    /* Hide text on very small screens, keep icon */
-    .nav-link { padding: 8px; gap: 0; }
+    .nav-links { gap: 4px; }
+    .nav-link { padding: 8px 10px; gap: 0; font-size: 13px; }
     .nav-link.active { font-weight: auto; }
 }
 
@@ -151,11 +151,33 @@ body {
 }
 
 @media (max-width: 600px) {
-    .create-note-btn { padding: 8px; border-radius: 50%; width: 36px; height: 36px; justify-content: center; }
-    .create-note-btn span { display: none; } /* if there was text span */
-    /* Wait, the raw blade has text next to SVG. We can hide the text. Actually, let's just make it smaller font padding */
-    .create-note-btn { font-size: 0; padding: 10px 14px; }
+    .create-note-btn {
+        min-width: 0;
+        height: 36px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        gap: 5px;
+        white-space: nowrap;
+        box-shadow: 0 4px 12px rgba(79, 168, 155, 0.24);
+    }
     .create-note-btn svg { width: 18px; height: 18px; }
+}
+
+@media (max-width: 420px) {
+    .navbar-container { padding: 0 14px; }
+    .navbar-menu-island { gap: 8px; padding: 10px; }
+    .nav-link { padding: 8px; font-size: 12px; }
+    .create-note-btn {
+        width: auto;
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+    .avatar {
+        width: 34px;
+        height: 34px;
+        font-size: 15px;
+    }
 }
 
 /* Profile Dropdown */

@@ -304,6 +304,8 @@ body {
 }
 
 .public-notes-toolbar {
+    position: relative;
+    z-index: 20;
     display: grid;
     grid-template-columns: 252px minmax(0, 1fr);
     align-items: stretch;
@@ -363,6 +365,7 @@ body {
     align-items: center;
     gap: 12px;
     padding: 12px;
+    overflow: visible;
 }
 
 .notes-search-field,
@@ -509,6 +512,8 @@ body {
 }
 
 .public-notes-page .public-notes-grid {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 18px;
@@ -1027,6 +1032,14 @@ body {
 
     .notes-controls-card {
         grid-template-columns: 1fr;
+    }
+
+    .notes-filter-field:has(.notes-select-button[aria-expanded="true"]) {
+        z-index: 25;
+    }
+
+    .public-notes-toolbar:has(.notes-select-button[aria-expanded="true"]) {
+        margin-bottom: 124px;
     }
 
     .notes-filter-field {

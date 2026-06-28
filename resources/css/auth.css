@@ -49,7 +49,11 @@ body {
 
 .brand-link { text-decoration: none; }
 .brand-logo { 
-    height: 160px; 
+    display: block;
+    width: min(520px, 42vw);
+    max-height: 160px;
+    height: auto;
+    object-fit: contain;
     filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1)); 
     transition: transform 0.3s ease; 
 }
@@ -316,6 +320,18 @@ body {
 
 @media (max-width: 900px) {
     .auth-page { flex-direction: column; }
-    .auth-visual { padding: 40px; flex: none; min-height: 200px; }
+    .auth-visual { padding: 32px 20px 20px; flex: none; min-height: 180px; }
+    .brand-logo {
+        width: min(320px, 82vw);
+        max-height: 120px;
+    }
     .auth-content { padding: 20px; align-items: flex-start; }
+}
+
+@media (max-width: 480px) {
+    .auth-visual { min-height: 150px; }
+    .brand-logo {
+        width: min(260px, 78vw);
+        max-height: 96px;
+    }
 }
