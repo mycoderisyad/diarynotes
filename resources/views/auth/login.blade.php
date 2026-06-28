@@ -17,7 +17,7 @@
         @enderror
     </div>
 
-    <div class="form-group" style="margin-bottom: 0;">
+    <div class="form-group form-group-compact">
         <div class="input-wrapper">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
@@ -30,7 +30,7 @@
     </div>
 
     <!-- Dummy link matching the design -->
-    <a href="#" onclick="alert('This demo does not support password recovery since email is not used.'); return false;" class="forgot-password">Forgot Password?</a>
+    <a href="#" class="forgot-password" data-forgot-password-demo>Forgot Password?</a>
 
     <div class="form-actions">
         <label class="toggle-switch">

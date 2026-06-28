@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico?v=2') }}">
-    <link rel="stylesheet" href="{{ asset('css/app/styles.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>@yield('title') - DiaryNotes</title>
     @stack('styles')
 </head>
@@ -82,7 +82,6 @@
         @yield('content')
     </main>
 
-    <script src="{{ asset('js/script.js') }}"></script>
     @stack('scripts')
 </body>
 </html>

@@ -6,26 +6,7 @@
     <title>Welcome to DiaryNotes</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico?v=2') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/welcome/style.css') }}">
-    <style>
-        /* Navbar hanya di pojok kanan atas */
-        .welcome-navbar {
-            position: fixed;
-            top: 24px;
-            right: 40px;
-            z-index: 100;
-        }
-
-        .welcome-navbar .navbar-menu-island {
-            background: #ffffff;
-            padding: 8px 16px;
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-        }
-    </style>
+    @vite(['resources/css/welcome.css', 'resources/js/app.js'])
 </head>
 <body>
     <!-- Navbar pojok kanan atas -->
@@ -51,6 +32,5 @@
         <a href="{{ route('login') }}" class="login-btn">Start Writing</a>
     </div>
 
-    <script src="{{ asset('js/quotes.js') }}"></script>
 </body>
 </html>

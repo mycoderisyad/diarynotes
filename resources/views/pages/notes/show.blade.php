@@ -3,7 +3,7 @@
 @section('title', 'View Note')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/notes/show.css') }}">
+    @vite('resources/css/pages/note-show.css')
 @endpush
 
 @section('content')

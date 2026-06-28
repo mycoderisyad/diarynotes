@@ -151,6 +151,14 @@ body {
     margin-bottom: 16px;
 }
 
+.form-group-compact {
+    margin-bottom: 0;
+}
+
+.auth-submit-spaced {
+    margin-top: 16px;
+}
+
 .input-wrapper {
     position: relative;
     display: flex;

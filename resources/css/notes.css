@@ -319,6 +319,37 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.15), inset 0 0 0 1px rgba(0,0,0,0.1);
 }
 
+.theme-swatch-yellow { background-color: #ffd27d; }
+.theme-swatch-peach { background-color: #ffa882; }
+.theme-swatch-mint { background-color: #d1f49b; }
+.theme-swatch-blue { background-color: #9ee1ff; }
+.theme-swatch-pink { background-color: #ffafc5; }
+
+.guest-container {
+    max-width: 680px;
+    margin: 100px auto 60px;
+    padding: 0 24px;
+}
+
+.guest-info {
+    background: var(--color-info-bg, #e8f4fd);
+    border: 1px solid var(--color-info-border, #b3d7f0);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: var(--color-text-secondary, #555);
+}
+
+.guest-info-icon {
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+.guest-theme-group {
+    margin-top: 4px;
+}
+
 .audio-group {
     margin-top: 4px;
 }

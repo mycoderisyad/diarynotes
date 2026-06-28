@@ -1,34 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $note['title'] }} - Public Note</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico?v=2') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/welcome/style.css') }}">
-</head>
-<body class="public-note-read-page">
-    <nav class="app-navbar" id="public-note-read-nav">
-        <div class="navbar-container">
-            <div class="navbar-logo-island">
-                <a href="{{ route('landing') }}" class="navbar-brand">
-                    <img src="{{ asset('image/logo diary.svg') }}" alt="DiaryNotes">
-                </a>
-            </div>
+@extends('layouts.public')
 
-            <div class="navbar-menu-island">
-                <div class="navbar-actions">
-                    @auth
-                        <a href="{{ route('home') }}" class="nav-btn">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="nav-btn">Login</a>
-                    @endauth
-                </div>
-            </div>
-        </div>
-    </nav>
+@section('title', $note['title'] . ' - Public Note')
+@section('body_class', 'public-note-read-page')
+@section('nav_id', 'public-note-read-nav')
 
+@section('content')
     <main class="public-note-read-shell">
         <div class="public-note-read-header">
             <a href="{{ route('public_notes') }}" class="public-note-back-link">Back to Public Notes</a>
@@ -59,9 +35,4 @@
             @endif
         </article>
     </main>
-
-    <footer class="welcome-footer">
-        <p>Made by Muhammad Risyad Raflan</p>
-    </footer>
-</body>
-</html>
+@endsection

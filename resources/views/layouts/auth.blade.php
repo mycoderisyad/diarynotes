@@ -6,7 +6,7 @@
     <title>@yield('title') - DiaryNotes</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico?v=2') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/auth/styles.css') }}">
+    @vite(['resources/css/auth.css', 'resources/js/app.js'])
     @stack('styles')
 </head>
 <body>

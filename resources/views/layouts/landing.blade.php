@@ -6,7 +6,7 @@
     <title>@yield('title', 'DiaryNotes')</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico?v=2') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/landing/styles.css') }}">
+    @vite(['resources/css/landing.css', 'resources/js/app.js'])
     @stack('styles')
 </head>
 <body>
@@ -78,21 +78,6 @@
         </div>
     </footer>
 
-    <script>
-        // Mobile nav toggle
-        const navToggle = document.getElementById('nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        if (navToggle && navLinks) {
-            navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-        }
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                const target = document.querySelector(a.getAttribute('href'));
-                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); if(navLinks) navLinks.classList.remove('open'); }
-            });
-        });
-    </script>
     @stack('scripts')
 </body>
 </html>

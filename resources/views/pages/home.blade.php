@@ -3,7 +3,7 @@
 @section('title', 'My Notes')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/home/styles.css') }}">
+    @vite('resources/css/pages/home.css')
 @endpush
 
 @section('content')
@@ -11,7 +11,7 @@
     @if(count($notes) > 0)
         <div class="notes-grid">
             @foreach($notes as $note)
-                <div class="note-card {{ $note['theme'] ?? 'theme-yellow' }}" onclick="window.location='{{ route('notes_show', $note['id']) }}'">
+                <div class="note-card {{ $note['theme'] ?? 'theme-yellow' }}" role="link" tabindex="0" data-note-card-url="{{ route('notes_show', $note['id']) }}">
                     <div class="note-card-content">
                         <div class="note-card-header">
                             <h3 class="note-card-title">{{ $note['title'] }}</h3>
@@ -38,14 +38,14 @@
                         </div>
 
                         <div class="note-card-actions">
-                            <a href="{{ route('notes_edit', $note['id']) }}" class="action-btn" title="Edit" onclick="event.stopPropagation()">
+                            <a href="{{ route('notes_edit', $note['id']) }}" class="action-btn" title="Edit" data-stop-card-navigation>
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
                             </a>
-                            <form action="{{ route('notes_destroy', $note['id']) }}" method="POST" class="inline-form"
-                                  onsubmit="event.stopPropagation(); return confirm('Yakin ingin menghapus note ini?')">
+                            <form action="{{ route('notes_destroy', $note['id']) }}" method="POST" class="inline-form" data-stop-card-navigation
+                                  onsubmit="return confirm('Yakin ingin menghapus note ini?')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="action-btn action-danger" title="Delete" onclick="event.stopPropagation()">
+                                <button type="submit" class="action-btn action-danger" title="Delete">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
                                 </button>
                             </form>

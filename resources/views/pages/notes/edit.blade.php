@@ -3,7 +3,7 @@
 @section('title', 'Edit Note')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/notes/styles.css') }}">
+    @vite('resources/css/notes.css')
 @endpush
 
 @section('content')
@@ -15,7 +15,3 @@
         'editorContent' => $editorContent,
     ])
 @endsection
-
-@push('scripts')
-    @include('pages.notes.partials.editor-script')
-@endpush
