@@ -55,34 +55,40 @@
                     >
                 </label>
 
-                <label class="notes-filter-field" for="public-notes-filter">
+                <div class="notes-filter-field">
                     <span>Filter</span>
-                    <div class="notes-select-wrap">
-                        <select id="public-notes-filter">
-                            <option value="all">All Notes</option>
-                            <option value="member">Member Notes</option>
-                            <option value="guest">Guest Notes</option>
-                        </select>
+                    <div class="notes-select-wrap" data-public-select>
+                        <button type="button" class="notes-select-button" id="public-notes-filter" data-select-button data-value="all" aria-haspopup="listbox" aria-expanded="false">
+                            <span data-select-label>All Notes</span>
+                        </button>
+                        <div class="notes-select-menu" role="listbox" aria-labelledby="public-notes-filter" hidden>
+                            <button type="button" role="option" data-select-option data-value="all" aria-selected="true">All Notes</button>
+                            <button type="button" role="option" data-select-option data-value="member" aria-selected="false">Member Notes</button>
+                            <button type="button" role="option" data-select-option data-value="guest" aria-selected="false">Guest Notes</button>
+                        </div>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </div>
-                </label>
+                </div>
 
-                <label class="notes-filter-field" for="public-notes-sort">
+                <div class="notes-filter-field">
                     <span>Sort</span>
-                    <div class="notes-select-wrap">
-                        <select id="public-notes-sort">
-                            <option value="latest">Latest</option>
-                            <option value="oldest">Oldest</option>
-                            <option value="az">A to Z</option>
-                            <option value="za">Z to A</option>
-                        </select>
+                    <div class="notes-select-wrap" data-public-select>
+                        <button type="button" class="notes-select-button" id="public-notes-sort" data-select-button data-value="latest" aria-haspopup="listbox" aria-expanded="false">
+                            <span data-select-label>Latest</span>
+                        </button>
+                        <div class="notes-select-menu" role="listbox" aria-labelledby="public-notes-sort" hidden>
+                            <button type="button" role="option" data-select-option data-value="latest" aria-selected="true">Latest</button>
+                            <button type="button" role="option" data-select-option data-value="oldest" aria-selected="false">Oldest</button>
+                            <button type="button" role="option" data-select-option data-value="az" aria-selected="false">A to Z</button>
+                            <button type="button" role="option" data-select-option data-value="za" aria-selected="false">Z to A</button>
+                        </div>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </div>
-                </label>
+                </div>
             </div>
         </section>
 
@@ -137,18 +143,37 @@
 
     <script>
         const searchInput = document.getElementById('public-notes-search');
-        const filterSelect = document.getElementById('public-notes-filter');
-        const sortSelect = document.getElementById('public-notes-sort');
+        const filterButton = document.getElementById('public-notes-filter');
+        const sortButton = document.getElementById('public-notes-sort');
         const notesGrid = document.getElementById('public-notes-grid');
         const noteItems = Array.from(document.querySelectorAll('[data-note-item]'));
         const notesCount = document.getElementById('public-notes-count');
         const emptySearchState = document.getElementById('public-notes-empty-search');
+        const customSelects = Array.from(document.querySelectorAll('[data-public-select]'));
 
-        if (searchInput && filterSelect && sortSelect && notesGrid && noteItems.length) {
+        if (searchInput && filterButton && sortButton && notesGrid && noteItems.length) {
+            const closeSelect = (selectWrap) => {
+                const button = selectWrap.querySelector('[data-select-button]');
+                const menu = selectWrap.querySelector('.notes-select-menu');
+
+                button?.setAttribute('aria-expanded', 'false');
+                if (menu) {
+                    menu.hidden = true;
+                }
+            };
+
+            const closeOtherSelects = (activeSelect) => {
+                customSelects.forEach((selectWrap) => {
+                    if (selectWrap !== activeSelect) {
+                        closeSelect(selectWrap);
+                    }
+                });
+            };
+
             const applyFilters = () => {
                 const query = searchInput.value.trim().toLowerCase();
-                const selectedFilter = filterSelect.value;
-                const sortMode = sortSelect.value;
+                const selectedFilter = filterButton.dataset.value || 'all';
+                const sortMode = sortButton.dataset.value || 'latest';
 
                 const filteredItems = noteItems.filter((item) => {
                     const source = item.dataset.source || '';
@@ -199,8 +224,47 @@
             };
 
             searchInput.addEventListener('input', applyFilters);
-            filterSelect.addEventListener('change', applyFilters);
-            sortSelect.addEventListener('change', applyFilters);
+
+            customSelects.forEach((selectWrap) => {
+                const button = selectWrap.querySelector('[data-select-button]');
+                const label = selectWrap.querySelector('[data-select-label]');
+                const menu = selectWrap.querySelector('.notes-select-menu');
+                const options = Array.from(selectWrap.querySelectorAll('[data-select-option]'));
+
+                button.addEventListener('click', () => {
+                    const willOpen = menu.hidden;
+                    closeOtherSelects(selectWrap);
+                    button.setAttribute('aria-expanded', String(willOpen));
+                    menu.hidden = !willOpen;
+                });
+
+                options.forEach((option) => {
+                    option.addEventListener('click', () => {
+                        button.dataset.value = option.dataset.value;
+                        label.textContent = option.textContent;
+
+                        options.forEach((item) => {
+                            item.setAttribute('aria-selected', String(item === option));
+                        });
+
+                        closeSelect(selectWrap);
+                        applyFilters();
+                    });
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!event.target.closest('[data-public-select]')) {
+                    customSelects.forEach(closeSelect);
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    customSelects.forEach(closeSelect);
+                }
+            });
+
             applyFilters();
         }
     </script>

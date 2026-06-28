@@ -87,10 +87,10 @@ class HomeController extends Controller
         $path = 'notes/' . Auth::id() . '/notes.json';
 
         if (Storage::exists($path)) {
-            $notes = json_decode(Storage::get($path), true) ?? [];
+            $notes = NoteController::normalizeNotes(json_decode(Storage::get($path), true));
 
             usort($notes, function ($a, $b) {
-                return strtotime($b['created_at']) - strtotime($a['created_at']);
+                return strtotime($b['created_at'] ?? '') - strtotime($a['created_at'] ?? '');
             });
         }
 

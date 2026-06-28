@@ -38,7 +38,7 @@ class NoteController extends Controller
         $path = $this->getUserNotesPath();
 
         if (Storage::exists($path)) {
-            return json_decode(Storage::get($path), true) ?? [];
+            return self::normalizeNotes(json_decode(Storage::get($path), true));
         }
 
         return [];
@@ -267,7 +267,7 @@ class NoteController extends Controller
                 continue;
             }
 
-            $notes = json_decode(Storage::get($filePath), true) ?? [];
+            $notes = self::normalizeNotes(json_decode(Storage::get($filePath), true));
             $userId = basename($dir);
             $user = \App\Models\User::find($userId);
 
@@ -293,6 +293,21 @@ class NoteController extends Controller
         $content = html_entity_decode($content, ENT_QUOTES, 'UTF-8');
 
         return trim(preg_replace('/\s+/u', ' ', $content) ?? '');
+    }
+
+    public static function normalizeNotes(mixed $decoded): array
+    {
+        if (!is_array($decoded)) {
+            return [];
+        }
+
+        if (isset($decoded['id'])) {
+            $decoded = [$decoded];
+        }
+
+        return array_values(array_filter($decoded, function ($note) {
+            return is_array($note) && isset($note['id'], $note['created_at']);
+        }));
     }
 
     public static function renderContent(array $note): string
